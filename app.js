@@ -1,12 +1,11 @@
-var app = require('express'),
-  specwalker = require('./lib/specwalker');
+var express = require('express');
 
-app.createServer();
+var app = express.createServer();
+
+app.use('/static', express.static(__dirname + '/static'));
 
 app.get('/', function(req, res){
-
+ res.render('index.jade', {specTree: 'JRunner'});
 });
 
-
 app.listen(8080);
-
