@@ -1,8 +1,10 @@
 html(lang='en')
   head
-    script(src='/static/jquery.min.js')
-title= title
+    script(src='http://closure-library.googlecode.com/svn/trunk/closure/goog/base.js')
+    script(src='/static/spec_tree.js')
+    script
+      var tree = !{JSON.stringify(specTree)};
+
+title JRunner
 body!= body
-  div.user-details
-    div.details
-      div.name
+  div
