@@ -1,5 +1,9 @@
 goog.require('goog.object');
 goog.require('goog.array');
+goog.require('goog.debug.DivConsole');
+goog.require('goog.debug.Trace');
+goog.require('goog.dom');
+goog.require('goog.ui.tree.TreeControl');
 
 objectToArray = function (object) {
   var mainArray;
@@ -21,3 +25,48 @@ objectToArray = function (object) {
   }
   return mainArray;
 };
+
+createTreeFromTestData = function(node, data) {
+  node.setHtml(data[0]);
+  if (data.length > 1) {
+    var children = data[1];
+    for (var i = 0; i < children.length; i++) {
+      var child = children[i];
+      var childNode = node.getTree().createNode('');
+
+      node.add(childNode);
+      createTreeFromTestData(childNode, child);
+    }
+  }
+};
+
+makeTree = function () {
+  var treeConfig = goog.ui.tree.TreeControl.defaultConfig;
+  specTree = new goog.ui.tree.TreeControl('root', treeConfig);
+
+  createTreeFromTestData(specTree,  objectToArray(tree)[0]);
+
+  specTree.render(goog.dom.getElement('treeContainer'));
+  goog.events.listen(specTree, goog.events.EventType.CHANGE, function(e){
+    var buildPath = function(item, root) {
+
+      var path, parent;
+
+      parent = item.getParent();
+      path = item.getText()
+      while(parent) {
+        path =  parent.getText() + "-" + path;
+        parent = parent.getParent();
+      }
+      return path;
+    };
+
+    top.frames[1].location = "/spec?namespace=" +
+      buildPath(e.target.getSelectedItem(), e.target.getText());
+  });
+};
+
+window.onload = function ()
+{
+  makeTree();
+}
