@@ -61,7 +61,7 @@ makeTree = function () {
       return path;
     };
 
-    top.frames[1].location = "/spec?namespace=" +
+    window.parent.frames[1].location.href  = "/spec?namespace=" +
       buildPath(e.target.getSelectedItem(), e.target.getText());
   });
 };
