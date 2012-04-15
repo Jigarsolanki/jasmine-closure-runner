@@ -1,10 +1,12 @@
 var express = require('express'),
-  SpecWalker = require('spec_walker').SpecWalker;
+  SpecWalker = require('spec_walker').SpecWalker,
+  nconf = require('nconf');
 
-//TODO: make a config file
 //TODO: Simlink issue
-var path = '/Users/jigarsolanki/Documents/Projects/Reach/reach/cloudkick/webapp/site_media/js/spec/';
 var app = express.createServer();
+nconf.argv().env().file({ file: './config.json' });
+
+var path = nconf.get('path');
 
 app.set('view options', { layout: false});
 app.set('view engine', 'jade');
@@ -30,7 +32,7 @@ app.get('/spec', function (req, res, next) {
 
   var namespace, specWalker, walker;
 
-  namespace = req.param('namespace') ;
+  namespace = req.param('namespace');
   if(namespace) {
     namespace = namespace.replace(/-/g,'/');
     specWalker = new SpecWalker();
