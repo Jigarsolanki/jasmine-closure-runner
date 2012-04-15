@@ -6,7 +6,7 @@ var express = require('express'),
 var app = express.createServer();
 nconf.argv().env().file({ file: './config.json' });
 
-var path = nconf.get('path');
+var specDirPath = nconf.get('specDirPath');
 
 app.set('view options', { layout: false});
 app.set('view engine', 'jade');
@@ -22,7 +22,7 @@ app.get('/nav', function(req, res){
 
   specWalker = new SpecWalker();
 
-  walker = specWalker.generateJson(path);
+  walker = specWalker.generateJson(specDirPath);
   walker.on('finished', function(data){
     res.render('nav', {specTree: data});
   });
@@ -36,7 +36,7 @@ app.get('/spec', function (req, res, next) {
   if(namespace) {
     namespace = namespace.replace(/-/g,'/');
     specWalker = new SpecWalker();
-    walker = specWalker.getSpecFilesByNameSpace(namespace);
+    walker = specWalker.getSpecFilesByRootDir(namespace);
     walker.on('finished', function(data){
       res.render('spec', {
         'namespace': namespace,

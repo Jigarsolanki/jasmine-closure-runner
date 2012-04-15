@@ -1,7 +1,14 @@
 include include
-
 h1=namespace
-a(href='') Run Again
+style
+  #run_again {
+    padding: 5px 15px;
+    margin: 0px 5px;
+    float: right;
+    background-color: orange;
+    border-radius: 8px;
+  }
+a#run_again(href='') Run Again
 each file in files
   script(src=file)
 
