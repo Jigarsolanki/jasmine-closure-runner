@@ -2,7 +2,7 @@ var express = require('express'),
   SpecWalker = require('spec_walker').SpecWalker,
   nconf = require('nconf');
 
-//TODO: Simlink issue
+//TODO: Simlink issue.
 var app = express.createServer();
 nconf.argv().env().file({ file: './config.json' });
 
