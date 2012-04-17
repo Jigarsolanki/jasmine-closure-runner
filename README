@@ -1,1 +1,3 @@
 The app provides interface for running closure specs
+
+In order for this to work for now you must create symlink to your js dir. 
