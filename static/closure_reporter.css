@@ -1,0 +1,7 @@
+.eventCounter {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  font-weight: bold;
+  background-color: #FAFAD2;
+}
