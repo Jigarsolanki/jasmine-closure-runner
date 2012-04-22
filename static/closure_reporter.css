@@ -5,3 +5,12 @@
   font-weight: bold;
   background-color: #FAFAD2;
 }
+
+.objectCounter {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  background-color: #FAFAD2;
+}
+
+
