@@ -3,7 +3,7 @@ goog.require('goog.events');
 goog.require('goog.ui.Control');
 
 jasmine.ClosureReporter = function() {
-  goog.Disposable.ENABLE_MONITORING = true;
+  //goog.Disposable.ENABLE_MONITORING = true;
 };
 
 jasmine.ClosureReporter.prototype.reportRunnerResults = function(spec) {
