@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 var express = require('express'),
   SpecWalker = require('spec_walker').SpecWalker,
   nconf = require('nconf');
