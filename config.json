@@ -1,6 +1,7 @@
 {
   "JSRoot": "/Users/jigarsolanki/Documents/Projects/Reach/reach/cloudkick/webapp/site_media/js/",
-  "specDirPath": "./static/external/spec/ck",
+  "specRootDir": "./static/external/spec/ck",
   "showEventCount": true,
-  "showUndisposedObject": false
+  "showUndisposedObject": false,
+  "port": 8080
 }
