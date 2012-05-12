@@ -49,3 +49,4 @@ app.get('/spec', function (req, res, next) {
 });
 
 app.listen(nconf.get('port'));
+console.log('server started at http://localhost:' + nconf.get('port'));
