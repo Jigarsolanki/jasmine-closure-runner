@@ -1,3 +1,5 @@
 {
-  "specDirPath": "./static/external/spec"
+  "specDirPath": "./static/external/spec/ck",
+  "showEventCount": true,
+  "showUndisposedObject": false
 }

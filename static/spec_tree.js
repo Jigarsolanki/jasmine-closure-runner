@@ -55,13 +55,13 @@ makeTree = function () {
       parent = item.getParent();
       path = item.getText()
       while(parent) {
-        path =  parent.getText() + "-" + path;
+        path =  parent.getText() + "/" + path;
         parent = parent.getParent();
       }
       return path;
     };
 
-    window.parent.frames[1].location.href  = "/spec?namespace=" +
+    window.parent.frames[1].location.href  = "/spec?path=" +
       buildPath(e.target.getSelectedItem(), e.target.getText());
   });
 };

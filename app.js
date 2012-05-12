@@ -34,9 +34,9 @@ app.get('/spec', function (req, res, next) {
 
   var namespace, specWalker, walker;
 
-  namespace = req.param('namespace');
+  namespace = req.param('path');
+  console.log(namespace);
   if(namespace) {
-    namespace = namespace.replace(/-/g,'/');
     specWalker = new SpecWalker();
     walker = specWalker.getSpecFilesByRootDir(namespace);
     walker.on('finished', function(data){
