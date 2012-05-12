@@ -43,7 +43,7 @@
 }
 
 .goog-tree-icon {
-  background-image: url(//ssl.gstatic.com/closure/tree/tree.png);
+  background-image: url('/static/images/tree.png');
 }
 
 .goog-tree-expand-icon {
