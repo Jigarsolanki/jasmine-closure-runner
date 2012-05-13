@@ -38,9 +38,13 @@ app.get('/spec', function (req, res, next) {
     specWalker = new SpecWalker(specDirPath);
     walker = specWalker.getSpecFilesByRootDir(namespace);
     walker.on('finished', function(data){
-      res.render('spec', {
-        'namespace': namespace,
-        'files': data
+      walker2 = specWalker.generateJson();
+      walker2.on('finished', function(treeData){
+        res.render('spec', {
+          'namespace': namespace,
+          'files': data,
+          'specTree': treeData
+        });
       });
     });
   } else {

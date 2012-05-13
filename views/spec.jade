@@ -1,4 +1,10 @@
+
 include include
+script(src='/static/spec_tree.js')
+link(rel='stylesheet', href='/static/tree.css')
+script
+  var tree = !{JSON.stringify(specTree)};
+
 h1=namespace
 form(action="/spec", method="get")
   input(type="hidden", name='path', value=namespace)
@@ -6,4 +12,3 @@ form(action="/spec", method="get")
 
 each file in files
   script(src=file)
-

@@ -1,3 +1,7 @@
+body {
+  width: 1600px;
+}
+
 .eventCounter {
   position: absolute;
   top: 20px;
@@ -26,7 +30,19 @@
 #run_again:hover {
   background-color: #cf2525;
 }
-
+.goog-tree-root {
+  float: left;
+  height:100%;
+  width:350px;
+  background-color: #FEF;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  padding: 10px;
+}
+.jasmine_reporter {
+  float: right;
+  width: 1100px;
+}
 .runner, .suite, .spec, .banner {
 
     -moz-border-radius: 6px;

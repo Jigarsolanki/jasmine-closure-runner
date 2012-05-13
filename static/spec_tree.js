@@ -48,6 +48,7 @@ makeTree = function () {
 
   specTree.render(goog.dom.getElement('treeContainer'));
   goog.events.listen(specTree, goog.events.EventType.CHANGE, function(e){
+    console.log('adfasdfafasdasdfasdfasasdffds');
     var buildPath = function(item, root) {
 
       var path, parent;
@@ -61,12 +62,15 @@ makeTree = function () {
       return path;
     };
 
-    window.parent.frames[1].location.href  = "/spec?path=" +
+    window.location.href  = "/spec?path=" +
       buildPath(e.target.getSelectedItem(), e.target.getText());
   });
 };
 
-window.onload = function ()
-{
-  makeTree();
-}
+goog.events.listenOnce(
+  window,
+  goog.events.EventType.LOAD,
+  function(){
+    makeTree();
+  });
+
