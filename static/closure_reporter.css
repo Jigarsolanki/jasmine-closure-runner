@@ -14,14 +14,16 @@ body {
   line-height: 20px;
   font-size: 15px;
   float: left;
-  width:350px;
+  width:352px;
   background-color: #90EE90;
-  padding: 10px;
+  padding: 9px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
+  border: 2px solid #006400;
 }
 #stats.warning {
  background: #FFA500;
+ border: 2px solid #FF8C00;
 }
 
 #event_desc, #object_desc {
@@ -42,6 +44,7 @@ body {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   padding: 10px;
+  border: 2px solid #A9A9A9;
 }
 .jasmine_reporter {
   float: right;

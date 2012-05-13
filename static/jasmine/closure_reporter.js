@@ -13,12 +13,11 @@ jasmine.ClosureReporter.prototype.reportRunnerResults = function(spec) {
 
   listenerCount = goog.events.getTotalListenerCount();
   eventDiv = goog.dom.getElement('total_events');
-  goog.dom.setTextContent(eventDiv, "  " + listenerCount);
+  goog.dom.setTextContent(eventDiv, listenerCount);
   if(listenerCount > 0) {
     goog.dom.classes.add(goog.dom.getElement('stats'), 'warning');
   }
   objectDiv = goog.dom.getElement('total_undisposed_object');
   goog.dom.setTextContent(objectDiv,
-    "  " + goog.Disposable.getUndisposedObjects().length);
-
+    goog.Disposable.getUndisposedObjects().length);
 };
