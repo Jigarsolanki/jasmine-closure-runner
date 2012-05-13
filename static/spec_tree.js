@@ -101,8 +101,7 @@ makeTree = function () {
   createTreeFromTestData(specTree,  objectToArray(tree)[0]);
 
   specTree.render(goog.dom.getElement('treeContainer'));
-
-
+  specTree.setSelectedItem(null);
   goog.events.listen(specTree, goog.events.EventType.CHANGE, function(e){
 
     var treePath;
