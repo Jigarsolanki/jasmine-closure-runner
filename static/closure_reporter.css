@@ -51,7 +51,11 @@ body {
   width: 1200px;
 }
 .runner, .suite, .spec, .banner {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
 
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+.goog-tree-item-label:hover {
+  font-weight: bold;
+  cursor: pointer;
 }

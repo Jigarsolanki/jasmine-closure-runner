@@ -38,7 +38,9 @@ renderResponse = function(res, specWalker, data, specPath) {
     res.render('spec', {
       'specPath': specPath,
       'files': data,
-      'specTree': treeData
+      'specTree': treeData,
+      'showEventCount': nconf.get('showEventCount'),
+      'showUndisposedObject': nconf.get('showUndisposedObject')
     });
   });
 }
