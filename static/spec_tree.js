@@ -107,7 +107,7 @@ makeTree = function () {
 
     var treePath;
 
-    treePath = "/spec?path=" +
+    treePath = "/?path=" +
       pathFromItem(e.target.getSelectedItem(), e.target.getText());
     window.location.href = treePath;
   });

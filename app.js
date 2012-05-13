@@ -13,23 +13,7 @@ app.set('view options', { layout: false});
 app.set('view engine', 'jade');
 app.use('/static', express.static(__dirname + '/static'));
 
-app.get('/', function(req, res){
-  res.render('index');
-});
-
-app.get('/nav', function(req, res){
-
-  var specWalker, walker;
-
-  specWalker = new SpecWalker(specDirPath);
-
-  walker = specWalker.generateJson();
-  walker.on('finished', function(data){
-    res.render('nav', {specTree: data});
-  });
-});
-
-app.get('/spec', function (req, res, next) {
+app.get('/', function (req, res, next) {
 
   var namespace, specWalker, walker;
 
@@ -53,4 +37,4 @@ app.get('/spec', function (req, res, next) {
 });
 
 app.listen(nconf.get('port'));
-console.log('server started at http://localhost:' + nconf.get('port'));
+console.log('\nserver started at http://localhost:' + nconf.get('port'));
