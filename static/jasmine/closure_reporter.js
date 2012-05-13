@@ -1,5 +1,6 @@
 goog.require('goog.dom');
 goog.require('goog.events');
+goog.require('goog.dom.classes');
 goog.require('goog.ui.Control');
 
 jasmine.ClosureReporter = function() {
@@ -8,15 +9,15 @@ jasmine.ClosureReporter = function() {
 
 jasmine.ClosureReporter.prototype.reportRunnerResults = function(spec) {
 
-  var eventDiv, content, objectDiv;
+  var eventDiv, content, objectDiv, listenerCount;
 
-  eventDiv = goog.dom.createDom('div', "eventCounter");
-  content = "Total Event Listeners: " + goog.events.getTotalListenerCount();
-  goog.dom.setTextContent(eventDiv, content);
-  goog.dom.appendChild(document.body,eventDiv);
-
-  objectDiv = goog.dom.createDom('div', "objectCounter");
-  content = "Total Undisposed Objects: " + goog.Disposable.getUndisposedObjects().length;
-  goog.dom.setTextContent(objectDiv, content);
-  goog.dom.appendChild(document.body,objectDiv);
+  listenerCount = goog.events.getTotalListenerCount();
+  eventDiv = goog.dom.getElement('total_events');
+  goog.dom.setTextContent(eventDiv, listenerCount);
+  if(listenerCount > 0) {
+    goog.dom.classes.add(goog.dom.getElement('stats'), 'warning');
+  }
+  objectDiv = goog.dom.getElement('total_undisposed_object');
+  goog.dom.setTextContent(objectDiv,
+    goog.Disposable.getUndisposedObjects().length);
 };
