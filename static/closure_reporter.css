@@ -10,29 +10,33 @@ body {
   background-color: #FAFAD2;
 }
 
+#stats {
+  line-height: 20px;
+  font-size: 15px;
+  float: left;
+  width:350px;
+  background-color: #90EE90;
+  padding: 10px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+#stats.warning {
+ background: #FFA500;
+}
+
+#event_desc, #object_desc {
+  float: left;
+}
+
 .objectCounter {
   position: absolute;
   top: 40px;
   right: 10px;
   background-color: #FAFAD2;
 }
-
-  #run_again {
-    padding: 5px 10px 6px;
-    color: #fff;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    cursor: pointer;
-    float: right;
-    background-color: #91bd09;
-    border: none;
-  }
-#run_again:hover {
-  background-color: #cf2525;
-}
 .goog-tree-root {
   float: left;
-  height:100%;
+  min-height:auto;
   width:350px;
   background-color: #FEF;
   -moz-border-radius: 6px;
@@ -41,7 +45,7 @@ body {
 }
 .jasmine_reporter {
   float: right;
-  width: 1100px;
+  width: 1200px;
 }
 .runner, .suite, .spec, .banner {
 
