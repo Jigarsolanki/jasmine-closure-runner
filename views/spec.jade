@@ -1,9 +1,22 @@
+
 include include
+script(src='/static/spec_tree.js')
+link(rel='stylesheet', href='/static/tree.css')
+script
+  var tree = !{JSON.stringify(specTree)};
+
 h1=namespace
-form(action="/spec", method="get")
-  input(type="hidden", name='path', value=namespace)
-  input(type="submit", value="Run Again", id='run_again')
+div#stats
+  div
+    div#event_desc
+      |Total Event listeners:
+    div#total_events
+      |0
+  div
+    div#object_desc
+      |Total undisposed objects:
+    div#total_undisposed_object
+      |0
 
 each file in files
   script(src=file)
-

@@ -26,7 +26,58 @@ objectToArray = function (object) {
   return mainArray;
 };
 
+setPathToLocalStorage = function(path) {
+  var expanded;
+
+  expanded = JSON.parse(localStorage.getItem('expanded'));
+  if(!expanded) {
+    expanded = {'paths': []};
+  }
+  expanded['paths'].push(path);
+  localStorage.setItem('expanded', JSON.stringify(expanded));
+};
+
+removePathFromLocalStorage = function(path) {
+  var expanded;
+
+  expanded = JSON.parse(localStorage.getItem('expanded'));
+  if(!expanded) {
+    expanded = {'paths': []};
+  }
+  goog.array.remove(expanded['paths'],(path));
+  localStorage.setItem('expanded', JSON.stringify(expanded));
+};
+
+pathFromItem = function(item, root) {
+
+  var path, parent;
+
+  parent = item.getParent();
+  path = item.getText();
+  while(parent) {
+    path =  parent.getText() + "/" + path;
+    parent = parent.getParent();
+  }
+  return path;
+};
+
+shouldExapnd = function (path) {
+
+  var expand, expanded;
+
+  expand = false;
+  expanded = JSON.parse(localStorage.getItem('expanded'));
+  if(!expanded) {
+    return false;
+  }
+
+  return goog.array.contains(expanded['paths'], path);
+};
+
 createTreeFromTestData = function(node, data) {
+
+  var expand;
+
   node.setHtml(data[0]);
   if (data.length > 1) {
     var children = data[1];
@@ -38,6 +89,9 @@ createTreeFromTestData = function(node, data) {
       createTreeFromTestData(childNode, child);
     }
   }
+  if(shouldExapnd(pathFromItem(node, data[0]))){
+    node.setExpanded(true);
+  }
 };
 
 makeTree = function () {
@@ -47,26 +101,43 @@ makeTree = function () {
   createTreeFromTestData(specTree,  objectToArray(tree)[0]);
 
   specTree.render(goog.dom.getElement('treeContainer'));
+
+
   goog.events.listen(specTree, goog.events.EventType.CHANGE, function(e){
-    var buildPath = function(item, root) {
 
-      var path, parent;
+    var treePath;
 
-      parent = item.getParent();
-      path = item.getText()
-      while(parent) {
-        path =  parent.getText() + "/" + path;
-        parent = parent.getParent();
-      }
-      return path;
-    };
+    treePath = "/spec?path=" +
+      pathFromItem(e.target.getSelectedItem(), e.target.getText());
+    window.location.href = treePath;
+  });
 
-    window.parent.frames[1].location.href  = "/spec?path=" +
-      buildPath(e.target.getSelectedItem(), e.target.getText());
+  goog.events.listen(specTree,
+    goog.ui.tree.BaseNode.EventType.EXPAND,
+    function(e) {
+
+      var expandedPath;
+
+      expandedPath = pathFromItem(e.target, e.target.getText());
+      setPathToLocalStorage(expandedPath);
+  });
+
+  goog.events.listen(specTree,
+    goog.ui.tree.BaseNode.EventType.COLLAPSE,
+    function(e) {
+
+      var expandedPath;
+
+      expandedPath = pathFromItem(e.target, e.target.getText());
+      removePathFromLocalStorage(expandedPath);
   });
 };
 
-window.onload = function ()
-{
-  makeTree();
-}
+goog.events.listenOnce(
+  window,
+  goog.events.EventType.LOAD,
+  function(){
+    makeTree();
+  }
+);
+
