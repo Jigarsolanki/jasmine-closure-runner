@@ -6,11 +6,11 @@ Requirenments:
 setup steps:
   1) git clone git@github.com:Jigarsolanki/JasmineClosureRunner.git
   2) cd JasmineClosureRunner
-  3) npm install
+  3) Run "npm install"
   4) Set up symlink
     * Open config.json
     * Give absolute path to the js folder of your repo
-  4) node setup.js
+    * Run "node setup.js" (This should automatically create a symlink for you)
     * You should see "Finished!" message
-  5) node app.js to run the app
+  5) Run "node app.js" to start the app
 
