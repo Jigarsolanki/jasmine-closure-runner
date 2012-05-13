@@ -1,14 +1,16 @@
 The app provides interface for running closure specs
 
-requirenments:
+Requirenments:
   1) npm
 
 setup steps:
   1) git clone git@github.com:Jigarsolanki/JasmineClosureRunner.git
   2) cd JasmineClosureRunner
-  3) Set up symlink
-    * open config.json
-    * give absolute path to the js folder of your reach repo
+  3) npm install
+  4) Set up symlink
+    * Open config.json
+    * Give absolute path to the js folder of your repo
   4) node setup.js
-  5) node app.js
+    * You should see "Finished!" message
+  5) node app.js to run the app
 
