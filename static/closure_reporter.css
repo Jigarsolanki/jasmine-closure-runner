@@ -13,4 +13,23 @@
   background-color: #FAFAD2;
 }
 
+  #run_again {
+    padding: 5px 10px 6px;
+    color: #fff;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    cursor: pointer;
+    float: right;
+    background-color: #91bd09;
+    border: none;
+  }
+#run_again:hover {
+  background-color: #cf2525;
+  font-size: 16px;
+}
 
+.runner, .suite, .spec, .banner {
+
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}

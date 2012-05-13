@@ -1,14 +1,9 @@
 include include
 h1=namespace
-style
-  #run_again {
-    padding: 5px 15px;
-    margin: 0px 5px;
-    float: right;
-    background-color: orange;
-    border-radius: 8px;
-  }
-a#run_again(href='') Run Again
+form(action="/spec", method="get")
+  input(type="hidden", name='path', value=namespace)
+  input(type="submit", value="Run Again", id='run_again')
+
 each file in files
   script(src=file)
 
